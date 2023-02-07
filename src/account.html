@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    
+</head>
+<body>
+    <section class="container overflow-hidden mx-auto">
+        <div class="bg-primary w-[65%] md:w-[40%] h-[500px] mx-auto mt-[150px] rounded-3xl">
+            <!-- login page -->
+            <div class="flex flex-col w-[80%] md:w-[70%] mx-auto items-center pt-[100px] space-y-5" id="login-page">
+                <h1 class="">Todolist</h1>
+                <!-- Email -->
+                <div class="flex flex-col">
+                    <label for="email" class="">Email</label>
+                    <input type="email" class="font-sans py-[10px] pl-[12px] rounded-md" name="email" id="email" placeholder="請輸入Email" value="benson@gmail.com">
+                </div>
+                <!-- Password -->
+                <div class="flex flex-col">
+                    <label for="password">密碼</label>
+                    <input type="password" class="font-sans py-[10px] pl-[12px] rounded-md" name="password" id="password" placeholder="請輸入密碼" value="123456" >
+                </div>
+                
+                <div class="flex flex-col items-center">
+                    <!-- 登入 -->
+                    <button class="bg-black w-[80px] md:w-[128px] py-2 rounded-md text-white mt-3" id="login-btn" >登入</button>
+                    
+                    <!-- 註冊帳號 -->
+                    <a href="#" class="mt-3" id="signup">註冊帳號</a>
+                </div>
+            </div>
+
+            <!-------------------------------------------------------------------------->
+            <!-- signup page -->
+            <div class="hidden flex-col w-[80%] md:w-[60%] mx-auto items-center pt-[50px] space-y-2" id="signup-page">
+                <p class="">註冊帳號</p>
+                <!-- Email -->
+                <div class="flex flex-col">
+                    <label for="email" class="">Email</label>
+                    <input type="email" class="font-sans py-[10px] pl-[12px] rounded-md" name="email" id="signup-email" placeholder="請輸入Email" value="abc@gmail.com">
+                </div>
+                <!-- 你的暱稱 -->
+                <div class="flex flex-col">
+                    <label for="name" class="">你的暱稱</label>
+                    <input type="text" class="font-sans py-[10px] pl-[12px] rounded-md" name="name" id="signup-name" placeholder="請輸入Email" value="benson">
+                </div>
+                <!-- Password -->
+                <div class="flex flex-col">
+                    <label for="password">密碼</label>
+                    <input type="password" class="font-sans py-[10px] pl-[12px] rounded-md" name="password" id="signup-password" placeholder="請輸入密碼" >
+                </div>
+                <!-- 再次輸入 Password -->
+                <div class="flex flex-col">
+                    <label for="password-again">再次輸入密碼</label>
+                    <input type="password" class="font-sans py-[10px] pl-[12px] rounded-md" name="password" id="password-again" placeholder="請再次輸入密碼" >
+                    <div class="" id="warm"></div>
+                </div>
+                
+                <div class="flex flex-col items-center">
+                    
+                    <!-- 註冊帳號 -->
+                    <button class="bg-black w-[100px] md:w-[128px] py-2 rounded-md text-white mt-3" id="signup-btn">註冊帳號</button>
+                    <!-- 登入 -->
+                    <a href="#" class="mt-3" id="login">登入</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="account.js"></script>
+</html>
