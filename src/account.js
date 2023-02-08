@@ -62,9 +62,12 @@ function login(e){
             console.log(res);
             if(res.data.message == '登入成功'){
                 let token = res.headers.authorization;
+                let nickname = res.data.nickname;
+                console.log(res);
                 // 跳到todolist頁面
-                location.href('./todolist.html');
-                localStorage.setItem("token",token);
+                location.href= './todolist.html';
+                localStorage.setItem('token',token);
+                localStorage.setItem('nickname',nickname);
             }
         })
         .catch((err)=>{
@@ -85,8 +88,7 @@ function signup(){
     axios
         .post(`${url}/users`,obj)
         .then((res)=>{
-            
-            console.log(res.data.message);
+            alert(res.data.message);
         })
         .catch((err)=>{
             console.log(err.response.data.error);

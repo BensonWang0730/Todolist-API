@@ -613,6 +613,18 @@ input::placeholder {
   margin-top: 1rem;
 }
 
+.mr-5 {
+  margin-right: 1.25rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.mr-6 {
+  margin-right: 1.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -623,10 +635,6 @@ input::placeholder {
 
 .h-\[500px\] {
   height: 500px;
-}
-
-.h-\[100vh\] {
-  height: 100vh;
 }
 
 .h-10 {
@@ -687,6 +695,10 @@ input::placeholder {
 
 .items-center {
   align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
@@ -821,6 +833,10 @@ input::placeholder {
 
 .text-\[30px\] {
   font-size: 30px;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .text-white {
