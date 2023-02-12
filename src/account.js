@@ -89,9 +89,10 @@ function signup(){
         .post(`${url}/users`,obj)
         .then((res)=>{
             alert(res.data.message);
+            // 註冊成功直接跳頁
         })
         .catch((err)=>{
-            console.log(err.response.data.error);
+            // console.log(err.response.data.error);
             alert(err.response.data.error);
         })
 }
