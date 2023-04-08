@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登入</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@700&family=Noto+Sans:wght@400;500;700&family=Roboto:ital,wght@0,400;0,700;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dist/output.css" />
+  </head>
+  <body class="flex h-[100vh] w-full bg-primary md:items-center">
+    <section class="container flex flex-col items-center md:flex-row">
+      <!-- img -->
+      <div
+        class="mb-[21px] mt-12 flex w-1/2 flex-col justify-center gap-5 md:my-0"
+      >
+        <div class="flex h-10 flex-row items-center justify-center gap-2">
+          <img src="../img/check .png" alt="" />
+          <h1 class="whitespace-nowrap font-['Baloo_Thambi_2']">
+            ONLINE TODO LIST
+          </h1>
+        </div>
+        <img src="../img/banner.png" class="hidden md:block" alt="" />
+      </div>
+      <!-- login -->
+      <div
+        class="flex w-[304px] flex-col items-center gap-6 md:ml-[106px]"
+        id="login-page"
+      >
+        <h2>最實用的線上代辦事項服務</h2>
+        <!-- input -->
+        <form id="login-form" class="flex w-full flex-col gap-4">
+          <div class="flex flex-col gap-1">
+            <label for="email"><h3>Email</h3></label>
+            <input
+              type="email"
+              class="rounded-[10px] py-3 pl-4"
+              placeholder="請輸入Email"
+              name="email"
+              id="email"
+              value="123@gmail.com"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="password"><h3>密碼</h3></label>
+            <input
+              type="password"
+              class="rounded-[10px] py-3 pl-4"
+              placeholder="請輸入密碼"
+              name="密碼"
+              id="password"
+              value="123456"
+            />
+          </div>
+        </form>
+        <!-- button -->
+        <button class="btn" id="login-btn">登入</button>
+        <button class="text-base font-bold" id="toEnrollPage">註冊帳號</button>
+      </div>
+      <!----------------------------------------------------------------------->
+      <!-- enroll -->
+      <div
+        class="hidden w-[304px] flex-col items-center gap-6 md:ml-[106px]"
+        id="enroll-page"
+      >
+        <h2>註冊帳號</h2>
+        <!-- input -->
+        <form id="enroll-form" class="flex w-full flex-col gap-4">
+          <div class="flex flex-col gap-1">
+            <label for="enroll-email"><h3>Email</h3></label>
+            <input
+              type="email"
+              class="rounded-[10px] py-3 pl-4"
+              placeholder="請輸入Email"
+              name="註冊Email"
+              id="enroll-email"
+              value="123@gmail.com"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="username"><h3>您的暱稱</h3></label>
+            <input
+              type="text"
+              class="rounded-[10px] py-3 pl-4"
+              placeholder="請輸入您的暱稱"
+              name="username"
+              id="username"
+              value="123"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="enroll-password"><h3>密碼</h3></label>
+            <input
+              type="password"
+              class="rounded-[10px] py-3 pl-4"
+              placeholder="請輸入密碼"
+              name="註冊密碼"
+              id="enroll-password"
+              value="123456"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="confirm-passowrd"><h3>再次輸入密碼</h3></label>
+            <input
+              type="password"
+              class="rounded-[10px] py-3 pl-4"
+              placeholder="請再次輸入密碼"
+              name="再次輸入密碼"
+              id="confirm-passowrd"
+              value="123456"
+            />
+          </div>
+        </form>
+        <!-- button -->
+        <button class="btn" id="enroll-btn">註冊帳號</button>
+        <button class="text-base font-bold" id="enroll-login-btn">登入</button>
+      </div>
+    </section>
+  </body>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="index.js"></script>
+</html>
