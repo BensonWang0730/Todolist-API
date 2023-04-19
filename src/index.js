@@ -1,3 +1,4 @@
+import { alertError, Toast } from "./sweetAlert.js";
 // 關注點分離
 // - 資料
 // - 方法
@@ -77,7 +78,7 @@ const component = {
       return;
     }
     if (error[inputPostion.name]) {
-      noError = false;
+      this.noError = false;
       p.textContent = error[inputPostion.name];
       parentNode.appendChild(p);
     }
@@ -120,13 +121,13 @@ const component = {
       axios
         .post(`${this.data.url}/users`, userInfo)
         .then((res) => {
-          alert(res.data.message);
+          alertError.fire({ title: res.data.message });
         })
         .catch((err) => {
-          alert(err.response.data.error);
+          alertError.fire({ title: err.response.data.error });
         });
     } else {
-      alert("輸入資料有問題！");
+      alertError.fire("輸入資料有問題！");
       return;
     }
   },
@@ -152,7 +153,7 @@ const component = {
         }
       })
       .catch((err) => {
-        alert(err.message);
+        alertError.fire({ title: err.message });
       });
   },
   // - 生命週期 ---------------------------------------------
@@ -190,14 +191,15 @@ const component = {
     const enrollLoginBtn = document.querySelector("#enroll-login-btn");
     loginBtn.addEventListener("click", () => {
       if (this.data.loginErrors !== undefined) {
-        alert("請檢查輸入");
+        alertError.fire("請檢查輸入");
         return;
       }
       this.login();
     });
     enrollLoginBtn.addEventListener("click", () => {
+      console.log(this.data.loginErrors);
       if (this.data.loginErrors !== undefined) {
-        alert("請檢查輸入");
+        alertError.fire("請檢查輸入");
         return;
       }
       this.login();
