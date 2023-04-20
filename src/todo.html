@@ -17,7 +17,7 @@
     ></script>
     <title>TodoList</title>
   </head>
-  <body class="bg-linear h-[100vh]">
+  <body class="bg-linear h-[100vh]" id="main">
     <!-- navbar -->
     <section
       class="mx-auto flex w-full flex-row justify-between px-[32px] pt-4"
@@ -31,21 +31,26 @@
       <!-- user -->
       <div class="flex flex-row items-center gap-6 text-[16px]">
         <p class="hidden font-bold md:flex" id="username">123</p>
-        <button class="font-normal" id="logout">登出</button>
+        <button class="font-normal" id="logout" @click="logout()">登出</button>
       </div>
     </section>
     <!-- todolist -->
-    <section class="mx-auto mt-10 flex w-[311px] flex-col md:w-[500px]">
+    <section
+      class="mx-auto mt-10 flex w-[311px] flex-col md:w-[500px]"
+      @keydown.enter.prevent="postTodo()"
+    >
       <div class="relative">
         <input
           class="w-full rounded-[10px] py-3 pl-4 drop-shadow-md"
           type="text"
           placeholder="新增待辦事項"
           id="todo-value"
+          v-model="input"
         />
         <button
           id="todo-btn"
           class="absolute top-[50%] right-1 h-10 w-10 -translate-y-[50%] rounded-[10px] bg-[#333333] text-white drop-shadow-none"
+          @click="postTodo()"
         >
           <i class="fa-sharp fa-solid fa-plus"></i>
         </button>
@@ -67,63 +72,61 @@
             value="全部"
             id="status-all"
             class="w-full border-b-2 border-transparent pb-[14px] focus:border-black"
+            @click="checkTodoStatus('status-all')"
           />
           <input
             type="button"
             value="待完成"
-            id="status-undo"
             class="w-full border-b-2 border-transparent pb-[14px] focus:border-black"
+            @click="checkTodoStatus('status-undo')"
           />
           <input
             type="button"
             value="已完成"
             id="status-done"
             class="w-full border-b-2 border-transparent pb-[14px] focus:border-black"
+            @click="checkTodoStatus('status-done')"
           />
         </div>
         <!-- list item -->
         <ul class="mt-[23px] flex flex-col gap-[17px]" id="list">
-          <li class="flex flex-row items-center px-[17px] md:pr-0 md:pl-6">
+          <li
+            class="flex flex-row items-center px-[17px] md:pr-0 md:pl-6"
+            v-for="(item,index) in todoData"
+            :key="index"
+            :data-id="item.id"
+          >
             <div
               class="flex w-full flex-row items-center border-b border-[#E5E5E5] pb-[15px]"
             >
-              <input
-                class="mr-4 h-5 w-5"
-                type="checkbox"
-                name=""
-                id=""
-              />把冰箱發霉的檸檬拿去丟
+              <img
+                class="mr-4 cursor-pointer"
+                id="done-btn"
+                @click="todoDone(item.id,index)"
+                :src="item.completed_at === null ? '../img/checkbox.png' :
+              '../img/done.png' "
+              />
+              {{item.content}}
             </div>
             <img
-              id="delete-btn"
-              class="cursor-pointer pl-0 md:px-[17px]"
+              @click="deleteData(item.id,index)"
+              class="pl-0 md:px-[17px]"
               src="../img/cross.png"
               alt=""
             />
-          </li>
-          <li class="flex flex-row items-center px-[17px] md:pr-0 md:pl-6">
-            <div
-              class="flex w-full flex-row items-center border-b border-[#E5E5E5] pb-[15px]"
-            >
-              <input
-                class="mr-4 h-5 w-5 cursor-pointer"
-                type="checkbox"
-                id=""
-              />把冰箱發霉的檸檬拿去丟
-            </div>
-            <img class="pl-0 md:px-[17px]" src="../img/cross.png" alt="" />
           </li>
         </ul>
         <div
           class="flex flex-row items-center justify-between px-4 py-6 text-sm md:pl-6 md:pr-12"
         >
-          <p class="" id="unfinish-item">5 個待完成項目</p>
+          <p class="" id="unfinish-item">{{undoNum}} 個待完成項目</p>
           <p class="text-[#9F9A91]">清除已完成項目</p>
         </div>
       </div>
     </section>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="todo.js"></script>
+  <script type="module" src="todo.js"></script>
 </html>
