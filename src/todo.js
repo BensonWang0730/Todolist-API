@@ -22,11 +22,6 @@ Vue.createApp({
     // 檢查登入狀態
     checkLoginStatus() {
       const userName = document.querySelector("#username");
-      const token = {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      };
       axios
         .get(`${this.url}/check`, this.token)
         .then(() => {
@@ -98,7 +93,6 @@ Vue.createApp({
       this.todoData = res.data.todos; //.reverse()
       await this.countUndo(this.todoData);
       if (this.todoData.length !== 0) {
-        // this.renderData(this.todoData);
         todolist.classList.remove("hidden");
         todoEmpty.classList.add("hidden");
         todoEmpty.classList.remove("flex");
@@ -116,7 +110,6 @@ Vue.createApp({
         .delete(`${this.url}/todos/${todoId}`, this.token)
         .then(() => {
           this.todoData.splice(index, 1);
-          // this.renderData(this.todoData);
           this.getTodo();
         })
         .catch((err) => {
@@ -151,13 +144,11 @@ Vue.createApp({
       axios
         .delete(`${this.url}/users/sign_out`, this.token)
         .then((res) => {
-          // console.log(res);
           localStorage.removeItem("authorization");
           localStorage.removeItem("nickname");
           location.href = "index.html";
         })
         .catch((err) => {
-          // console.log(err);
           alert("登出失敗");
         });
     },
