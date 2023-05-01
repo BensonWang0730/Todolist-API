@@ -29,18 +29,16 @@ Vue.createApp({
           userName.textContent = this.nickname;
         })
         .catch((err) => {
-          alert("不存在此用戶");
+          alertError.fire("不存在此用戶");
           location.href = "./index.html";
         });
+      if (localStorage.getItem("nickname") === null) {
+        location.href = "index.html";
+        return;
+      }
     },
     // 切換 TodoList 不同狀態的資料
     checkTodoStatus(status) {
-      // 差一點點，因為 v-for 跑的是 todoData，所以只能去變動 todoData，
-      // 但 filter 過後 todoData 就越變越少
-      // 裝態：全部
-      if (this.temp.length === 0) {
-        this.temp = [...this.todoData];
-      }
       if (status === "status-all") {
         this.todoData = this.temp;
         return;
@@ -91,6 +89,7 @@ Vue.createApp({
 
       const res = await axios.get(`${this.url}/todos`, this.token);
       this.todoData = res.data.todos; //.reverse()
+      this.temp = [...this.todoData];
       await this.countUndo(this.todoData);
       if (this.todoData.length !== 0) {
         todolist.classList.remove("hidden");
@@ -113,7 +112,7 @@ Vue.createApp({
           this.getTodo();
         })
         .catch((err) => {
-          alert(err.message);
+          alertError.fire(err.message);
         });
     },
     // 打勾完成 TodoList 資料 PATCH
@@ -129,7 +128,7 @@ Vue.createApp({
           });
         })
         .catch((err) => {
-          alert(err.message);
+          alertError.fire(err.message);
         });
     },
     // 計算待完成數量
@@ -149,7 +148,7 @@ Vue.createApp({
           location.href = "index.html";
         })
         .catch((err) => {
-          alert("登出失敗");
+          alertError.fire("登出失敗");
         });
     },
   },
